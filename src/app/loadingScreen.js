@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Router, Route, Link, Switch } from "react-router-dom";
-import { CONFIG_FIREBASE } from "./assets/constants";
+import { CONFIG_FIREBASE } from "./assets/firebaseConfig";
 import firebase from "firebase";
 
 import AppContentHolder from "./appContent/AppContentRoutes";
