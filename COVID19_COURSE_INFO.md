@@ -25,7 +25,7 @@ During the last couple of weeks, we have felt that most of the students at KTH s
 
 ## The Application
 
-The construction of the application COVID19 KTH Course Info is built by React and Firebase. React is a javascript framework created by Facebook, and Firebase is a web and mobile development platform created by Google. The application was developed to work primarily as an mobile app, but you can use it in your computer's web browser as well. Click on the [link](https://dd2482-covid19-course-info.firebaseapp.com) to see the mobile application COVID19 KTH Course Info in the web browser. If you want to
+The construction of the application COVID19 KTH Course Info is built by React and Firebase. React is a javascript framework created by Facebook, and Firebase is a web and mobile development platform created by Google. The application was developed to work primarily as an mobile app, but you can use it in your computer's web browser as well. Click on the [link](https://dd2482-covid19-course-info.firebaseapp.com) to see the mobile application COVID19 KTH Course Info in the web browser.
 
 <a name="func"> </a>
 
