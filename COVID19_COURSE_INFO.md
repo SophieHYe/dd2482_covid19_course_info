@@ -1,6 +1,8 @@
 # COVID-19 KTH Course Info
 A project by Johanna Iivanainen (jii@kth.se) and Tommy Samuelsson (tommysam@kth.se) for the course Automated Software Testing and DevOps DD2482.
 
+The GitHub repository for the project COVID-19 KTH Course Info is available here: https://github.com/Zodbigt/dd2482_covid19_course_info
+
 ## Table of contents
 1. [Background](#back)
     
