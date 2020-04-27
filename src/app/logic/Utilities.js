@@ -147,10 +147,39 @@ export function extractSingleData(data) {
     return courseData;
 }
 
-export function checkCourseData(courseCode) {
+export async function checkCourseData(courseCode, courseName, courseExamination) {
     let obj = {
         status: false,
         errorMessage: "",
+        linkStatus: false,
+        link: "",
+    }
+    obj = checkCourseCode(courseCode);
+    if (obj.status){
+        return obj;
+    }
+    obj = await checkIfCourseExits(courseCode);
+    if (obj.linkStatus){
+        return obj;
+    }
+    obj = checkCourseName(courseName);
+    if (obj.status){
+        return obj;
+    }
+    obj = checkCourseExamination(courseExamination);
+    if (obj.status){
+        return obj;
+    }
+
+    return obj;
+}
+
+function checkCourseCode(courseCode) {
+    let obj = {
+        status: false,
+        errorMessage: "",
+        linkStatus: false,
+        link: "",
     }
     if (isEmptyEvaluator(courseCode)) {
         obj.status = true;
@@ -171,6 +200,73 @@ export function checkCourseData(courseCode) {
     if (!courseCodePart.match(ONLY_CAPITAL_CHARS)) {
         obj.status = true;
         obj.errorMessage = "Course code need to start with two capital characters";
+        return obj;
+    }
+    return obj;
+}
+
+async function checkIfCourseExits(courseCode) {
+    let responseJson = await getAllOtherCourses();
+    let keys = Object.keys(responseJson);
+    let len = keys.length;
+    let obj = {
+        status: false,
+        errorMessage: "",
+        linkStatus: false,
+        link: "",
+    }
+    for (let i = 0; i < len; i++) {
+        if (courseCode === responseJson[keys[i]].courseCode) {
+            obj.linkStatus = true;
+            obj.errorMessage = "Course code: " + courseCode + " allready exits. Checkout the link below";
+            obj.link = "/courses/coursesession/" + keys[i];
+        }
+    }
+    return obj;
+}
+
+async function getAllOtherCourses () {
+    let url = "https://dd2482-covid19-course-info.firebaseio.com/kth/courses.json";
+    try {
+        let response = await fetch(url);
+        let responseJson = await response.json();
+        return responseJson;
+    }
+    catch (error) {
+        alert("Server not respodning, error code: 6tgh876ytghji8erf");
+    }
+}
+
+function checkCourseName(courseName) {
+    let obj = {
+        status: false,
+        errorMessage: "",
+        linkStatus: false,
+        link: "",
+    }
+    if (isEmptyEvaluator(courseName)) {
+        obj.status = true;
+        obj.errorMessage = "You need to enter a course name";
+        return obj;
+    }
+    return obj;
+}
+
+function checkCourseExamination(courseExamination) {
+    let obj = {
+        status: false,
+        errorMessage: "",
+        linkStatus: false,
+        link: "",
+    }
+    if (isEmptyEvaluator(courseExamination)) {
+        obj.status = true;
+        obj.errorMessage = "You need to enter a course examination info";
+        return obj;
+    }
+    if (courseExamination.length > 60) {
+        obj.status = true;
+        obj.errorMessage = "Course examination info can max be 60 characters long";
         return obj;
     }
     return obj;

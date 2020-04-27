@@ -25,11 +25,12 @@ import Loading from "../../../components/Loading";
 import HeaderFiller from "../../../components/HeaderFiller";
 import DotMenuButton from "../../../components/DotMenuButton";
 import Button from "../../../components/Button";
-import { isEmptyEvaluator, formatDate, extractSingleData } from "../../../logic/Utilities";
+import { isEmptyEvaluator, formatDate, extractSingleData, checkCourseData } from "../../../logic/Utilities";
 import BackButton from "../../../components/BackButton";
 import { renderEmpty } from "../../../components/EmptyTab";
 import TextField from "../../../components/TextField";
 import TextArea from "../../../components/TextArea";
+import Error from "../../../components/Error";
 
 class CourseSession extends React.Component {
     constructor(props) {
@@ -42,6 +43,7 @@ class CourseSession extends React.Component {
             courseName: "",
             courseExamination: "",
             courseInfo: "",
+            errorMessage: "",
         };
     }
 
@@ -63,7 +65,7 @@ class CourseSession extends React.Component {
         });
     }
 
-    updateCourseInfo() {
+    async updateCourseInfo() {
         let courseId = this.getCourseId();
         let data = this.state.data;
         let extractedData = extractSingleData(data);
@@ -84,6 +86,13 @@ class CourseSession extends React.Component {
         if (isEmptyEvaluator(courseInfo)) {
             courseInfo = extractedData.courseInfo;
         }
+        
+        let response = await checkCourseData(courseCode, courseName, courseExamination);
+        if (response.status){
+            alert(response.errorMessage)
+            this.setState({ errorMessage: response.errorMessage });
+            return;
+        }
 
         let ref = firebase.database().ref("kth/courses/" +  courseId);
         ref.update({
@@ -93,7 +102,7 @@ class CourseSession extends React.Component {
             courseInfo: courseInfo,
             courseUpdated: Date.parse(new Date),
         });
-        this.setState({ editeMode: false })
+        this.setState({ editeMode: false, errorMessage: "" })
     }
 
     renderLoading() {
@@ -114,6 +123,7 @@ class CourseSession extends React.Component {
                 {this.renderCourseTextFieldEdit("Course Name", "courseName", data.courseName , "cn" )}
                 {this.renderCourseTextFieldEdit("Course Examination", "courseExamination", data.courseExamination , "ce")}
                 {this.renderCourseTextAreaEdit("Course Info", "courseInfo", data.courseInfo , "ci")}
+                <Error errorText={this.state.errorMessage} />
                 <div style={s.posSaveBtn}>
                     <Button label={"Save changes"} onClick={() => this.updateCourseInfo()} />
                 </div>

@@ -19,7 +19,7 @@ import TextField from "../../../components/TextField";
 import TextArea from "../../../components/TextArea";
 import Error from "../../../components/Error";
 import Button from "../../../components/Button";
-import { isEmptyEvaluator, alertData } from "../../../logic/Utilities";
+import { isEmptyEvaluator, checkCourseData, alertData } from "../../../logic/Utilities";
 import { ONLY_CAPITAL_CHARS } from "../../../assets/constants";
 
 class SubmitCoursesInfo extends React.Component {
@@ -50,24 +50,18 @@ class SubmitCoursesInfo extends React.Component {
         });
     }
 
-    submit = async () => {
+    async submit()  {
         let courseCode = this.state.courseCode;
         let courseName = this.state.courseName;
         let courseExamination = this.state.courseExamination;
         let courseInfo = this.state.courseInfo;
-        if (this.checkCourseCode(courseCode)) {
+        let response = await checkCourseData(courseCode, courseName, courseExamination);
+        if (response.status){
+            this.setState({ errorMessage: response.errorMessage });
             return;
         }
-        let response = await this.checkIfCourseExits(courseCode);
-        if (response.status) {
-            this.setState({ errorMessage: response.message, linkBtnObj: {status: true, label: courseCode, link: response.link} });
-            return;
-        }
-        if (isEmptyEvaluator(courseName)) {
-            this.setState({ errorMessage: "You need to enter a course name" });
-            return;
-        }
-        if (this.checkCourseExamination(courseExamination)) {
+        else if (response.linkStatus){
+            this.setState({ errorMessage: response.errorMessage, linkBtnObj: {status: true, label: courseCode, link: response.link} });
             return;
         }
         let date = Date.parse(new Date);
@@ -97,7 +91,7 @@ class SubmitCoursesInfo extends React.Component {
             if (courseCode === responseJson[keys[i]].courseCode) {
                 obj.status = true;
                 obj.message = "Course code: " + courseCode + " allready exits. Checkout the link below";
-                obj.link = "/courses/" + keys[i];
+                obj.link = "/courses/coursesession/" + keys[i];
             }
         }
         return obj;
@@ -113,35 +107,6 @@ class SubmitCoursesInfo extends React.Component {
         catch (error) {
             this.setState({ errorMessage: "Server not respodning, error code: 6tgh876ytghji8erf" });
         }
-    }
-
-    checkCourseCode(courseCode) {
-        if (isEmptyEvaluator(courseCode)) {
-            this.setState({ errorMessage: "You need to enter a course code" });
-            return true;
-        }
-        if (courseCode.length < 6) {
-            this.setState({ errorMessage: "Course code need to be at least 6 characters" });
-            return true;
-        }
-        let charPart = courseCode.substring(0, 2)
-        if (!charPart.match(ONLY_CAPITAL_CHARS)) {
-            this.setState({ errorMessage: "Course code need to start with two capital characters" });
-            return true;
-        }
-        return false;
-    }
-
-    checkCourseExamination(courseExamination) {
-        if (isEmptyEvaluator(courseExamination)) {
-            this.setState({ errorMessage: "You need to enter a course examination info" });
-            return true;
-        }
-        if (courseExamination.length > 60) {
-            this.setState({ errorMessage: "Course examination info can max be 60 characters long" });
-            return true;
-        }
-        return false;
     }
 
     renderLoading() {
