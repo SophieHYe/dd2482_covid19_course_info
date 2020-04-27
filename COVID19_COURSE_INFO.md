@@ -57,18 +57,15 @@ We are running Jenkins as Docker container from the Blue Ocean Docker image. We 
 
 Right now, we only have a Build stage in our main pipeline. Our Build stage install all necessary dependencies and package for our React application. If we continue to work with this project after the course has ended, we also want to create a Test stage and a Deliver stage. We have tried to fix a Deliver stage in the pipeline for our forked repository, but with no further success. If there are someone who has previous knowledge or experience with creating Jenkins' pipelines for a React/NodeJS application, we would like some help with our issue [#528](https://github.com/KTH/devops-course/issues/528).
 
-Today, our Jenkins server is running locally on Johanna's computer. To get access to our Jenkins server, you need to go to [92.34.7.239:8080](92.34.7.239:8080) and log in with these credentials:
-
-Username: ********  
-Password: ********
+Today, our Jenkins server is running locally on Johanna's computer. To get access to our Jenkins server, you need to go to [92.34.7.239:8080](92.34.7.239:8080) and use the account `test_user` that we have created for this project. Please contact one of us for the credentials.
 
 The server might not be up and running all the time, but down below we have a screencast of our Jenkins server in action. If the server is not up and running and you want to test our pipeline, please contact Johanna at jii@kth.se.
 
 Click on the image below to be re-directed to the screencast at Youtube:
 
-[![](/images/jenkins_screencast.png)](https://youtu.be/XFCERzBMqZc) 
+[![](/images/jenkins_screencast.png)](https://youtu.be/TLqDoI6_AWE) 
 
-The video has been cut at some points to shorten the length of the video and remove parts that does not add any new information to the filmed screencast. 
+The video has been cut at some points to shorten the length of the video and remove parts that does not add any new information to the filmed screencast. The music that we have used in this video is provided by https://www.bensound.com.
 
 #### Firebase
 Firebase is a serverless computing service, which provides a real-time database for it's users. Firebase provides an API that allows data to be synchronized across all the clients. The application data is stored on Firebase's own cloud.[[1]](https://en.wikipedia.org/wiki/Firebase) Serverless computing is relevant for DevOps, since it shortens the release cycle. By using a serverless architecture, the developers can focus on the functionality of the application and the application's GUI, instead of writing scripts for the server or the database. 
