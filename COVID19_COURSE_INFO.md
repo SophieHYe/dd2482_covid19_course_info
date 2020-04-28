@@ -73,7 +73,7 @@ The video has been cut at some points to shorten the length of the video and rem
 
 #### Firebase
 Firebase is a serverless computing service, which provides a suite of API's desiged to help deploy an application with the power of Google servers. This project uses Firebase's real time database and webhosting API’s. 
-The real time database is a NoSQL document database, which gives it some limits in terms of doing custom queries to create views, but has its focus on simplicity and speed. 
+The real time database is a NoSQL document database, which gives it some limits in terms of doing custom queries to create views. Instead, the database in Firebas has its focus on simplicity and speed. 
 
 The setup is very straight forward. 
 * Install npm package with `npm install --save firebase`
@@ -88,8 +88,8 @@ The setup is very straight forward.
     }
     ```
 
-    ![](/images/firebase_nodes.png)
-    example of document path 
+    ![](/images/firebase_nodes.png)  
+    Example of document path. 
   
 Firebase allows for instant changes with its websocket communication.
 
@@ -105,7 +105,7 @@ To change something in the database use commands like `push`, `update` and `dele
     });
 ```
 A conventional server setup also have security so it's not possible to cause any harm.
-In firebase this is done by setting up security rules. By asigning read and write permissions for each node that is desired to be protected.
+In Firebase this is done by setting up security rules, by assigning read and write permissions for each node that is desired to be protected.
 
 The security rules can be edited in the online admin portals with a “test playground”. Allowing for testing different scenarios. 
 
@@ -117,7 +117,7 @@ The other tool we use is the hosting API. Which allows to upload a build web pag
 This is done by installing the Firebase CL. (This is a global tool allowing for interaction with Firebase.)
 Then simply run then `firebase deploy` command on the desired directory.
 
-[[1]](https://en.wikipedia.org/wiki/Firebase) Serverless computing is relevant for DevOps, since it shortens the release cycle. By using a serverless architecture, the developers can focus on the functionality of the application and the application's GUI, instead of writing scripts for the server or the database. 
+Serverless computing is relevant for DevOps, since it shortens the release cycle. By using a serverless architecture, the developers can focus on the functionality of the application and the application's GUI, instead of writing scripts for the server or the database. [[1]](https://en.wikipedia.org/wiki/Firebase) 
 
  
 <a name="crit"> </a>
@@ -130,7 +130,7 @@ We aim to achieve at least these criteria:
 * A mobile and web application that helps KTH students stay updated on changes in examination due to COVID-19.
 
 **The contribution is related to / built with DevOps technology**
-* We have created our own Jenkins server, and built a small pipeline that is connected to our private repository for the application. We are also using Firebase in this project, which is a serverless computing service.
+* We have created our own Jenkins server, and built a small pipeline that is connected to our repository for the application. We are also using Firebase in this project, which is a serverless computing service.
 
 **The contribution is novel**
 * We haven't found any application that is similar to ours yet. 
@@ -140,7 +140,7 @@ We aim to achieve at least these criteria:
 There a lot of courses at KTH, and some of them might have found a good solution to examine a course that usually has an exam that takes place in school. This application could also be used for examinars to see how other courses are handling the situation at get some inspiration.
 
 **The contribution attracts support from other KTH students**
-* Right now, our repository is private (because we have an API key in we don't want to make public if not necessary) but we could make it public or ask other students to contribute to the project. Either by submit a new course, update a existing one or help us develop and improve the application.
+* We are going to ask a couple of students from KTH to contribute to the project by give us feedback about the app. For instance, if they could consider to use it if more students contributed and updated the courses' information. At the same time, we will ask them if they could add course information to the appliction about some of their own courses. After we have received their feedback, we will discuss their comments. If the majority thinks that the application is useful and necessary, we will post it on our personal LinkedIn. We have also talked about create an issue in the KTH DevOps repository, where we ask the other students to contribute to our project if they want to. 
 
 <a name="ref"> </a> 
 
