@@ -70,7 +70,53 @@ Click on the image below to be re-directed to the screencast at Youtube:
 The video has been cut at some points to shorten the length of the video and remove parts that does not add any new information to the filmed screencast. The music that we have used in this video is provided by https://www.bensound.com.
 
 #### Firebase
-Firebase is a serverless computing service, which provides a real-time database for it's users. Firebase provides an API that allows data to be synchronized across all the clients. The application data is stored on Firebase's own cloud.[[1]](https://en.wikipedia.org/wiki/Firebase) Serverless computing is relevant for DevOps, since it shortens the release cycle. By using a serverless architecture, the developers can focus on the functionality of the application and the application's GUI, instead of writing scripts for the server or the database. 
+Firebase is a serverless computing service, which provides a suite of API's desiged to help deploy an application with the power of Google servers. This project uses Firebase's real time database and webhosting API’s. 
+The real time database is a NoSQL document database, which gives it some limits in terms of doing custom queries to create views, but has its focus on simplicity and speed. 
+
+The setup is very straight forward. 
+* Install npm package with `npm install --save firebase`
+* Initiate it in your code with `firebase.initializeApp(CONFIG_FIREBASE)`. The `CONFIG_FIREBASE` is just a const with your projects API key.
+* Then subscribe to the desired document path of your database. 
+    ```js
+    dataBaseListner() {
+        let ref = firebase.database().ref("kth/courses");
+        ref.orderByValue().on("value", data => {
+            this.setState({ data: data, loading: false });
+        });
+    }
+    ```
+
+    ![](/images/firebase_nodes.png)
+    example of document path 
+  
+Firebase allows for instant changes with its websocket communication.
+
+To change something in the database use commands like `push`, `update` and `delete`.
+```js
+    let ref = firebase.database().ref("kth/courses/");
+    ref.push({
+        courseCode: courseCode,
+        courseName: courseName,
+        courseExamination: courseExamination,
+        courseInfo: courseInfo,
+        courseUpdated: date,
+    });
+```
+A conventional server setup also have security so it's not possible to cause any harm.
+In firebase this is done by setting up security rules. By asigning read and write permissions for each node that is desired to be protected.
+
+The security rules can be edited in the online admin portals with a “test playground”. Allowing for testing different scenarios. 
+
+![](/images/test_playground.png)
+
+So the complexity of safe security is handled in the end by Firebase/Google. It is also possible to tie the security rules to accounts for example, but the idea of this app is to have an open community. So editing courses for now is allowed by anyone. 
+
+The other tool we use is the hosting API. Which allows to upload a build web page for fast deployment. 
+This is done by installing the Firebase CL. (This is a global tool allowing for interaction with Firebase.)
+Then simply run then `firebase deploy` command on the desired directory.
+
+[[1]](https://en.wikipedia.org/wiki/Firebase) Serverless computing is relevant for DevOps, since it shortens the release cycle. By using a serverless architecture, the developers can focus on the functionality of the application and the application's GUI, instead of writing scripts for the server or the database. 
+
  
 <a name="crit"> </a>
 
