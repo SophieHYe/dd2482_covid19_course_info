@@ -39,6 +39,8 @@ If you want to see the current numbers for another country, you can add the coun
 #### KTH Courses
 If you click on the button ``Courses`` at the bottom of the screen, you will get a list of some of the courses at KTH. Each course object contains the course code, the name of the course and how the course will be examined now due to the COVID-19. If you click on one of the courses, you will also get some more information about the picked course. If you want to update the information for the picked course, you can click on the ``three dots`` in the right corner at the top of the screen. 
 
+The courses that we currently have in our app is added by ourselves through the submit function that we have in the application. The idea about the course list is that students can contribute with information as much as they want. So we are not fetching any data about the courses right now. Instead, we want students to add their own courses, and all the necessary changes related to them since KTH closed.
+
 If you want to submit a new course, click on the ``Submit`` button at the bottom of the screen. We have added some restrictions on how the new course submission should be structured:
 * Course code should be 6 characters long and start with two letters
 * You need to add some information about how the course is examined
