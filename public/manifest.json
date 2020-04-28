@@ -1,6 +1,6 @@
 {
   "short_name": "KTH Covid19 info",
-  "name": "KTH Covid19 course info",
+  "name": "C-19 Info",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#FAFAFA",
+  "background_color": "#FAFAFA"
 }
