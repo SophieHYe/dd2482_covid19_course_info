@@ -119,6 +119,25 @@ Then simply run then `firebase deploy` command on the desired directory.
 
 Serverless computing is relevant for DevOps, since it shortens the release cycle. By using a serverless architecture, the developers can focus on the functionality of the application and the application's GUI, instead of writing scripts for the server or the database. [[1]](https://en.wikipedia.org/wiki/Firebase) 
 
+
+## Deployment method
+To make it possible to have a safe reliable deployment Google Play Store and Apple App store are common dominant tools to distribute applications. 
+It is two safe gardens that for the most part work very well. But a known problem with them is that if something critical needs to be updated it can still take days for a aprovel from Google or Apple leaving an application in a potentially vulnerable state. Another problem is that users tend to not always update applications forcing developers to support multiple versions.
+
+This project instead relies on PWA(progressive web apps) technologies. This means that the entire application resides in a web page. Drawbacks with PWA is that they are not as fast as their native siblings. But for a small application like this one, it is hard to notice any difference at all, if all PWA guidelines are followed correctly. Since the application is a web page, it can easily be deployed to every user without the issue of needing to support multiple versions. 
+But being on the Google Play Store and Apple App store is a great way to be distributed. This application however does miss out on that. Both Google and Apple provide their API for a webview. What this means is that a web page can live inside a container of both the Google app and the Apple app, pretending to be a native app. Then be uploaded to respective stores. Needing Google and Apple aprovel only once. After that simply update the web page when deploying new versions. The deployment can be done really fast thanks to the Firebase hosting tool used in this project.
+
+This usually leads to bad apps that feel more like web pages. But since this project makes use of PWA the illusion of a native application is almost perfect.
+
+Here are some example screens of the app in different environments: 
+
+<img src="./images/android_app.png" width="200" height="400" />
+<img src="./images/chrome_app.png" width="200" height="400" />
+<img src="./images/installed_web_app.png" width="200" height="400" />
+
+The first one is inside a Adnroid app
+The second one is the app on the webb
+The third one is the web app installed from the page it self. 
  
 <a name="crit"> </a>
 
@@ -130,7 +149,7 @@ We aim to achieve at least these criteria:
 * A mobile and web application that helps KTH students stay updated on changes in examination due to COVID-19.
 
 **The contribution is related to / built with DevOps technology**
-* We have created our own Jenkins server, and built a small pipeline that is connected to our repository for the application. We are also using Firebase in this project, which is a serverless computing service.
+* We have created our own Jenkins server, and built a small pipeline that is connected to our repository for the application. We are also using Firebase in this project, which is a serverless computing service. Also using PWA(progressive web apps) for faster and simplified deployment.
 
 **The contribution is novel**
 * We haven't found any application that is similar to ours yet. 
