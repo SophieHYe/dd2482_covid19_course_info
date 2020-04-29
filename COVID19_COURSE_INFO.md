@@ -131,12 +131,12 @@ This usually leads to bad apps that feel more like web pages. However, since thi
 
 Here are some example screens of the app in different environments: 
 
-<img src="./images/android_app.png" width="200" height="400" /> <img src=""./images/" width="200" height="400" /> <img src="./images/chrome_app.png" width="200" height="400" /> <img src="./images/installed_web_app.png" width="200" height="400" />
+<img src="./images/android_app.png" width="200" height="400" /> <img src="./images/" width="200" height="400" /> <img src="./images/chrome_app.png" width="200" height="400" /> <img src="./images/installed_web_app.png" width="200" height="400" />
 
 The first one is inside an Android app.  
 The second one is the app on the webb.   
 The third one is the web app installed from the page it self.  
-The forth one is inside an
+The forth one is inside an Apple app.
  
 <a name="crit"> </a>
 
