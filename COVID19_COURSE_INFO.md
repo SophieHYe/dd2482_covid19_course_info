@@ -134,9 +134,9 @@ Here are some example screens of the app in different environments:
 <img src="./images/android_app.png" width="200" height="400" /> <img src="./images/apple.png" width="200" height="400" /> <img src="./images/chrome_app.png" width="200" height="400" /> <img src="./images/installed_web_app.png" width="200" height="400" />
 
 The first one is inside an Android app.  
-The second one is the app on the webb.   
+The second one is inside an Apple app.    
 The third one is the web app installed from the page it self.  
-The forth one is inside an Apple app.
+The fourth one is the app on the webb. 
  
 <a name="crit"> </a>
 
