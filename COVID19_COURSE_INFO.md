@@ -121,23 +121,22 @@ Serverless computing is relevant for DevOps, since it shortens the release cycle
 
 
 ## Deployment method
-To make it possible to have a safe reliable deployment Google Play Store and Apple App store are common dominant tools to distribute applications. 
-It is two safe gardens that for the most part work very well. But a known problem with them is that if something critical needs to be updated it can still take days for a aprovel from Google or Apple leaving an application in a potentially vulnerable state. Another problem is that users tend to not always update applications forcing developers to support multiple versions.
+To make it possible to have a safe reliable deployment, Google Play Store and Apple App Store are common dominant tools to distribute applications. It is two safe gardens that mostly work very well. However, a known problem with them is that if something critical needs to be updated or changed with the application, it could take days for an approval from Google or Apple, which leaves the application in a potentially vulnerable state. Another problem is that users tend to not always update applications, forcing developers to support multiple versions.
 
-This project instead relies on PWA(progressive web apps) technologies. This means that the entire application resides in a web page. Drawbacks with PWA is that they are not as fast as their native siblings. But for a small application like this one, it is hard to notice any difference at all, if all PWA guidelines are followed correctly. Since the application is a web page, it can easily be deployed to every user without the issue of needing to support multiple versions. 
-But being on the Google Play Store and Apple App store is a great way to be distributed. This application however does miss out on that. Both Google and Apple provide their API for a webview. What this means is that a web page can live inside a container of both the Google app and the Apple app, pretending to be a native app. Then be uploaded to respective stores. Needing Google and Apple aprovel only once. After that simply update the web page when deploying new versions. The deployment can be done really fast thanks to the Firebase hosting tool used in this project.
+This project instead relies on PWA (progressive web apps) technologies. This means that the entire application resides in a web page. Drawbacks with PWA is that they are not as fast as their native siblings. However, for a small application like this one, it is hard to notice any difference at all, if all PWA guidelines are followed correctly. Since the application is a web page, it can easily be deployed to every user without the issue of needing to support multiple versions. 
 
-This usually leads to bad apps that feel more like web pages. But since this project makes use of PWA the illusion of a native application is almost perfect.
+A benefit with using Google Play Store and Apple App Store, is that it is a great way to distribute the application. This application however does miss out on that. Both Google and Apple provide their API for a web view. What this means is that a web page can live inside a container of both the Google app and the Apple app, pretending to be a native app. Then be uploaded to respective stores. In this case, Google and Apple only need to approve once. After that, you can simply update the web page when deploying new versions of the mobile application. The deployment can be done really fast thanks to the Firebase hosting tool used in this project.
+
+This usually leads to bad apps that feel more like web pages. However, since this project makes use of PWA, the illusion of a native application is almost perfect.
 
 Here are some example screens of the app in different environments: 
 
-<img src="./images/android_app.png" width="200" height="400" />
-<img src="./images/chrome_app.png" width="200" height="400" />
-<img src="./images/installed_web_app.png" width="200" height="400" />
+<img src="./images/android_app.png" width="200" height="400" /> <img src="./images/apple.png" width="200" height="400" /> <img src="./images/chrome_app.png" width="200" height="400" /> <img src="./images/installed_web_app.png" width="200" height="400" />
 
-The first one is inside a Adnroid app
-The second one is the app on the webb
-The third one is the web app installed from the page it self. 
+The first one is inside an Android app.  
+The second one is inside an Apple app.    
+The third one is the web app installed from the page it self.  
+The fourth one is the app on the webb. 
  
 <a name="crit"> </a>
 
